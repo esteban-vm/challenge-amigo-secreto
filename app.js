@@ -11,10 +11,24 @@ function agregarAmigo() {
 
   if (nombreAmigo) {
     amigos.push(nombreAmigo);
+
+    actualizarAmigos();
+
     campoTexto.value = '';
   } else {
     alert('Por favor, inserte un nombre');
   }
 
   campoTexto.focus();
+}
+
+function actualizarAmigos() {
+  const lista = /** @type {HTMLUListElement} */ (document.getElementById('listaAmigos'));
+  lista.innerHTML = '';
+
+  for (const amigo of amigos) {
+    const item = document.createElement('li');
+    item.textContent = amigo;
+    lista.appendChild(item);
+  }
 }
